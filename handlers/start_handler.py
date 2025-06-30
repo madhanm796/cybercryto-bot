@@ -4,20 +4,13 @@ from telegram.ext import ContextTypes
 
 class StartHandler:
 
-    @classmethod
-    async def start(cls, update: Update, context_types: ContextTypes.DEFAULT_TYPE):
+
+    async def start(self, update: Update, context_types: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Hello, World")
 
-    @classmethod
-    async def description(cls, update: Update, context_type: ContextTypes.DEFAULT_TYPE):
-        await update.message.reply_text(StartHandler.get_description(), parse_mode='HTML')
 
-    @classmethod
-    def open_description_file(cls):
-        data = None
-        with open('description.txt', 'r') as file:
-            data = file.read()
-        return data
+    async def description(self, update: Update, context_type: ContextTypes.DEFAULT_TYPE):
+        await update.message.reply_text(StartHandler.get_description(), parse_mode='HTML')
 
     @classmethod
     def get_description(cls):
