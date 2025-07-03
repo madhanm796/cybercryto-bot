@@ -57,8 +57,44 @@ class AESUtils:
         return False
 
 
-    async def decrypt(self, file_path: str, key: bytes) -> bool | None:
-        pass
+    async def decrypt(self, file_path: str, key_path: str) -> bool | None:
+        
+        try:
+            key = await self.extract_key(key_path)
+
+            raw = await self._helper.read_file(file_path)
+
+            iv = raw[:16]
+            cipher_text = raw[16:]
+            decrypter = AES.new(key, AES.MODE_GCM, iv)
+            unchiper_text = unpad(decrypter.decrypt(cipher_text), AES.block_size)
+
+            decryption_path = file_path +'.dec'
+
+            if not await self._helper.write_file(decryption_path, unchiper_text):
+                return
+    
+            if not await self._helper.send_file(decryption_path):
+                return
+
+            return True
+                        
+
+        except Exception as err:
+            print(err)
+
+        return False
+
+    async def extract_key(self, key: str) -> bytes | None:
+        key: str
+
+        try:
+            with open(key, 'r') as f:
+                key = f.read()
+        except Exception as err:
+            print(err)
+
+        return bytes.fromhex(key)
 
 
         

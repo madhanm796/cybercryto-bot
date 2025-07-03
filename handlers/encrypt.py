@@ -10,7 +10,6 @@ class EncryptHandler:
     ASK_FILE, ASK_ENCRYPTION_METHOD = range(2)
 
     _application: Application
-    _file_object: dict
 
     def __init__(self):
         pass

@@ -39,13 +39,14 @@ def main():
     )
 
     decrypt_conv_handler = ConversationHandler(
-        entry_points=["decrypt", decrypt_handler.start],
+        entry_points=[CommandHandler("decrypt", decrypt_handler.start)],
         states={
-
+            decrypt_handler.ASK_FILE:[MessageHandler(filters.Document.ALL, decrypt_handler.ask_file)],
+            decrypt_handler.ASK_KEY_FILE:[MessageHandler(filters.Document.ALL, decrypt_handler.ask_key_file)],
+            decrypt_handler.ASK_DECRYPTION_METHOD:[MessageHandler(filters.TEXT & (~filters.COMMAND), decrypt_handler.ask_method)]
         },
         fallbacks=[]
     )
-
 
     application.add_handler(CommandHandler("start", start_handler.start))
 

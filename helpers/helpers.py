@@ -14,14 +14,14 @@ class Helpers:
         self._update = update
         self._context_type = context_type
 
-    async def save_file(self):
+    async def save_file(self, ext: str = ""):
         # Getting the file
         document = self._update.message.document
 
         file = await self._context_type.bot.get_file(document.file_id)
         # Defining path to save the file
 
-        file_path = os.path.join(UPLOAD_FOLDER, document.file_unique_id)
+        file_path = os.path.join(UPLOAD_FOLDER, document.file_unique_id + ext)
         
         # Saving the file to local drive
         await  file.download_to_drive(file_path)
