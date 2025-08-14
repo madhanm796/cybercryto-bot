@@ -36,7 +36,16 @@ class Helpers:
             data = file.read()
 
         return data
-    
+
+    async def delete_file(self, path: str) -> bool | None:
+
+        import os
+
+        try:
+            os.remove(path)
+        except Exception as e:
+            print(e)
+
     async def write_file(self, path: str, data: bytes) -> bool | None:
         
         with open(path, 'wb') as file:

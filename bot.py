@@ -1,3 +1,5 @@
+import threading
+
 import dotenv
 import os
 
@@ -17,9 +19,20 @@ from handlers.start import StartHandler
 from handlers.encrypt import EncryptHandler
 from handlers.decrypt import DecryptHandler
 
-from handlers.error import error
+from flask import Flask
 
 TOKEN = dotenv.get_key(key_to_get='TOKEN', dotenv_path='.env', encoding='utf-8')
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is alive!", 200
+
+
+def run_web():
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
 def main():
 
@@ -70,6 +83,8 @@ def main():
 if __name__ == '__main__':
 
     os.makedirs(os.path.join(os.curdir, UPLOAD_FOLDER), exist_ok=True)
+    threading.Thread(target=run_web, daemon=True).start()
 
-    main()
+    import asyncio
 
+    asyncio.run(main())

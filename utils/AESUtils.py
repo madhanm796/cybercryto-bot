@@ -32,6 +32,7 @@ class AESUtils:
             cipher = AES.new(key, AES.MODE_GCM, iv)
             cipher_text = cipher.encrypt(pad(data, AES.block_size))
 
+            old_path = file_path
             file_path = file_path + '.enc'
             path_to_key: str = file_path.split('.')[0]+'.key'
 
@@ -50,6 +51,14 @@ class AESUtils:
             if not await self._helper.send_file(path_to_key):
                 await self._update.message.reply_text("Operation failed...")
                 return
+
+            # if await self._helper.delete_file(file_path) and await self._helper.delete_file(path_to_key) and await self._helper.delete_file(old_path):
+            #     await self._update.message.reply_text("File is deleted")
+            #     return
+
+            await self._helper.delete_file(file_path)
+            await self._helper.delete_file(path_to_key)
+            await self._helper.delete_file(old_path)
 
             return True
 
@@ -80,6 +89,10 @@ class AESUtils:
     
             if not await self._helper.send_file(decryption_path):
                 return
+
+            await self._helper.delete_file(file_path)
+            await self._helper.delete_file(decryption_path)
+            await self._helper.delete_file(key_path)
 
             return True
                         
