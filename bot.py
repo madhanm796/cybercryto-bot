@@ -35,7 +35,9 @@ def main():
             encrypt_handler.ASK_FILE:[MessageHandler(filters.Document.ALL, encrypt_handler.ask_file)],
             encrypt_handler.ASK_ENCRYPTION_METHOD:[MessageHandler(filters.TEXT & (~filters.COMMAND), encrypt_handler.ask_method)]
         },
-        fallbacks=[]
+        fallbacks=[
+            CommandHandler("cancel", encrypt_handler.cancel)
+        ]
     )
 
     decrypt_conv_handler = ConversationHandler(
@@ -45,10 +47,13 @@ def main():
             decrypt_handler.ASK_KEY_FILE:[MessageHandler(filters.Document.ALL, decrypt_handler.ask_key_file)],
             decrypt_handler.ASK_DECRYPTION_METHOD:[MessageHandler(filters.TEXT & (~filters.COMMAND), decrypt_handler.ask_method)]
         },
-        fallbacks=[]
+        fallbacks=[
+            CommandHandler("cancel", decrypt_handler.cancel)
+        ]
     )
 
     application.add_handler(CommandHandler("start", start_handler.start))
+    application.add_handler(CommandHandler("help", start_handler.help))
 
     application.add_handlers(
         [

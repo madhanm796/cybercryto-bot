@@ -19,6 +19,8 @@ class AESUtils:
         self._helper = Helpers(self._update, self._context_type)
 
     async def encrypt(self, file_path: str) -> bool | None:
+
+        await self._update.message.reply_text("Please wait a moment...")
         
         key: bytes = get_random_bytes(16)
         iv: bytes = get_random_bytes(16)
@@ -58,6 +60,8 @@ class AESUtils:
 
 
     async def decrypt(self, file_path: str, key_path: str) -> bool | None:
+
+        await self._update.message.reply_text("Please wait a moment...")
         
         try:
             key = await self.extract_key(key_path)

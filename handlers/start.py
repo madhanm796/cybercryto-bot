@@ -8,4 +8,12 @@ class StartHandler:
 
     async def start(self, update: Update, context_type: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text("Welcome to "+update.get_bot().first_name)
-        
+    
+    async def help(self, update: Update, context_type: ContextTypes.DEFAULT_TYPE):
+
+        message: str = "/encrypt -> Encrypting a document.\n/decrypt -> Decrypting a encrypted document.\n"
+
+        await update.message.reply_text(
+            message,
+            parse_mode='HTML'
+        )

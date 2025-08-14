@@ -52,3 +52,9 @@ class DecryptHandler:
             await update.message.reply_text("Operation not permitted, Reason: invalid decryption method chosen.")
 
         return ConversationHandler.END
+
+
+    async def cancel(self, update: Update, context_type: ContextTypes.DEFAULT_TYPE):
+
+        await update.message.reply_text("Operation canceled by the user.")
+        return ConversationHandler.END

@@ -42,8 +42,14 @@ class EncryptHandler:
                 await update.message.reply_text("Encryption successful")
             else:
                 await update.message.reply_text("Encryption failed")
-        elif message == 'rsa':
-            print("Choosen RSA encryption")
+        
+        else:
+            await update.message.reply_text("Chosen method is not available right now.")
         
         return ConversationHandler.END
     
+
+    async def cancel(self, update: Update, context_type: ContextTypes.DEFAULT_TYPE):
+
+        await update.message.reply_text("Operation canceled by the user.")
+        return ConversationHandler.END

@@ -7,9 +7,10 @@
     <list default="true" id="5c2f3334-608c-41a4-959e-b6aad3c6e03e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crypto_engine/aes_utiils.py" beforeDir="false" afterPath="$PROJECT_DIR$/crypto_engine/aes_utiils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/decrypt_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/decrypt_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/encrypt_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/encrypt_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/decrypt.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/decrypt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/encrypt.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/encrypt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/AESUtils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/AESUtils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,16 +38,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.bot.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.bot.executor": "Run",
+    "Python.main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "M:/Projects/Telegram Bot"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="bot" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Telegram Bot" />
